@@ -1,35 +1,40 @@
-/* Make the video take up the entire screen */
-html, body {
+body{
   margin: 0;
-  padding: 0;
-  height: 100%;
-  overflow: hidden; /* Hide overflow to prevent scrollbars */
+  box-sizing: border-box;
+  background-color: black;
+  font-family: monospace;
 }
 
-.video-container {
-  position: fixed; /* Fixed positioning to keep it fullscreen */
+
+section.vid {
+  height: 600vh;
+  position: relative;
+}
+
+section.vid div.holder {
+  position: sticky;
   top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1; /* Place behind the content */
 }
 
-#fullscreen-video {
+section.vid video {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* Scrollable area */
-.scroll-area {
-  height: 200vh; /* Create a tall area to enable scrolling */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+section.vid div.story {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: var(--secondary-color);
 }
 
-.scroll-content {
-  height: 100vh; /* Ensure content is visible on screen */
-  background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent background */
+section.vid div.story div {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
+
