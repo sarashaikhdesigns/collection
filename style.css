@@ -1,175 +1,35 @@
-body {
-  background-color: #052047;
-  color: white; 
+/* Make the video take up the entire screen */
+html, body {
   margin: 0;
-  padding: 20px; /* Add padding for spacing */
-  font-family: monospace;
-  text-align: center; /* Center the h1 text */
+  padding: 0;
+  height: 100%;
+  overflow: hidden; /* Hide overflow to prevent scrollbars */
 }
 
-
-.logo img{
-  width: 40%;
-  margin-bottom: 2%;
-  margin-top: 10%;
-
-}
-
-.logo:hover{
-  filter: drop-shadow(0 0 10px white);
-}
-
-h1 {
-  margin-bottom: 20px; /* Add space between the h1 and the grid */
-  font-size: 40px;
-  text-align: left;
-  font-size: 50px;
-}
-
-
-.nav {
-  padding-top: 20px;
-  justify-content: center;
-  display: flex; /* Align items in a row */
-  gap: 10px; /* Add spacing between items */
-}
-
-.top-links a {
-  color: white;
-  text-decoration: none;
-  font-family: monospace;
-  font-size: 25px;
-  position: relative;
-}
-
-.top-links a::after {
-  content: '|'; /* Adds the separator */
-  margin-left: 10px; /* Space between link and separator */
-}
-
-.top-links:last-child a::after {
-  content: ''; /* Removes the separator after the last link */
-}
-
-.top-links:hover{
-  filter: drop-shadow(0 0 10px white);
-}
-
-
-.socials {
-  font-family: monospace;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  padding: 15px;
-  text-align: left;
-}
-
-.socials a {
-  display: block; /* Make each link take up a full line */
-  color: white;
-  text-decoration: none;
-  padding: 5px;
-  margin-right: 10px;
-  font-size: 16px;
-}
-
-.socials a:hover {
-  filter: drop-shadow(0 0 10px white);
-}
-
-
-.socials img{
-  width: 3%;
-}
-
-
-.copyright {
-  font-family: monospace;
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  padding: 15px;
-}
-
-.copyright a {
-  color: white;
-  text-decoration: none;
-  padding: 5px;
-  margin-right: 10px;
-  font-size: 16px;
-}
-
-.gif-background {
-  position: fixed;
-  opacity: 0.7;
+.video-container {
+  position: fixed; /* Fixed positioning to keep it fullscreen */
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1; /* Make sure GIF is behind other elements */
-  overflow: hidden;
+  z-index: -1; /* Place behind the content */
 }
 
-.gif-background img {
+#fullscreen-video {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Cover the entire container without distortion */
+  object-fit: cover;
 }
 
-
-
-
-
-/* Mobile Devices (up to 480px) */
-@media (max-width: 480px) {
-
-  .logo{
-    margin-top: 10%;
-  }
-
-  .logo img {
-    width: 80%; /* Increase logo size for smaller screens */
-  }
-
-  h1 {
-    font-size: 30px; /* Decrease h1 font size */
-  }
-
-  .top-links a {
-    font-size: 14px; /* Decrease font size for top links */
-  }
-
-  .socials a {
-    font-size: 10px; /* Decrease font size for social links */
-  }
-
-  .copyright a {
-    font-size: 10px; /* Decrease font size for copyright links */
-  }
-
+/* Scrollable area */
+.scroll-area {
+  height: 200vh; /* Create a tall area to enable scrolling */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Tablets (481px to 768px) */
-@media (min-width: 481px) and (max-width: 768px) {
-  .logo img {
-    width: 60%; /* Moderate size for tablets */
-  }
-
-  .items img{
-    width: 50%;
-  }
-
-  h1 {
-    font-size: 40px; /* Moderate h1 font size */
-  }
-
-
-  .socials a {
-    font-size: 15px; /* Moderate font size for social links */
-  }
-
-  .copyright a {
-    font-size: 15px; /* Moderate font size for copyright links */
-  }
+.scroll-content {
+  height: 100vh; /* Ensure content is visible on screen */
+  background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent background */
 }
