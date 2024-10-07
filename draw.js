@@ -17,11 +17,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Save button functionality
   saveButton.addEventListener('click', function () {
-    html2canvas(imageContainer).then(function (canvas) {
+    // Use html2canvas to capture the drawing container
+    html2canvas(imageContainer, {
+      useCORS: true, // Allow cross-origin image handling if needed
+      allowTaint: false, // Tainting disabled to allow images to be saved
+      logging: true, // Enable logging for debugging
+    }).then(function (canvas) {
+      // Create a link to download the canvas as a PNG file
       const link = document.createElement('a');
-      link.href = canvas.toDataURL('image/png');
+      link.href = canvas.toDataURL('image/png'); // Get canvas data as a PNG file
       link.download = 'drawing.png'; // Set the downloaded file name
       link.click(); // Trigger download
+    }).catch(function (error) {
+      console.error('Error capturing the canvas:', error); // Log any errors
     });
   });
 
@@ -32,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Update cursor to show current image
   function updateCursor() {
-    const randomImageURL = `images/r${currentImageIndex}.png`;
+    const randomImageURL = `images/flower${currentImageIndex}.png`;
     imageContainer.style.cursor = `url(${randomImageURL}) 16 16, auto`;
   }
 
