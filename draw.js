@@ -17,19 +17,36 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Save button functionality
   saveButton.addEventListener('click', function () {
-    // Use html2canvas to capture the drawing container
-    html2canvas(imageContainer, {
-      useCORS: true, // Allow cross-origin image handling if needed
-      allowTaint: false, // Tainting disabled to allow images to be saved
-      logging: true, // Enable logging for debugging
-    }).then(function (canvas) {
-      // Create a link to download the canvas as a PNG file
-      const link = document.createElement('a');
-      link.href = canvas.toDataURL('image/png'); // Get canvas data as a PNG file
-      link.download = 'drawing.png'; // Set the downloaded file name
-      link.click(); // Trigger download
-    }).catch(function (error) {
-      console.error('Error capturing the canvas:', error); // Log any errors
+    // Ensure all images have loaded before capturing
+    const images = imageContainer.getElementsByTagName('img');
+    const promises = Array.from(images).map(img => {
+      return new Promise((resolve) => {
+        if (img.complete) {
+          resolve();
+        } else {
+          img.onload = resolve;
+          img.onerror = resolve; // Resolve on error too to avoid being stuck
+        }
+      });
+    });
+
+    // After all images are loaded, use html2canvas
+    Promise.all(promises).then(() => {
+      html2canvas(imageContainer, {
+        useCORS: true, // Allow cross-origin image handling if needed
+        allowTaint: false, // Tainting disabled to allow images to be saved
+        logging: true, // Enable logging for debugging
+        scrollX: 0, // Ensure that scrolling doesn't interfere with the capture
+        scrollY: 0
+      }).then(function (canvas) {
+        // Create a link to download the canvas as a PNG file
+        const link = document.createElement('a');
+        link.href = canvas.toDataURL('image/png'); // Get canvas data as a PNG file
+        link.download = 'collage.png'; // Set the downloaded file name
+        link.click(); // Trigger download
+      }).catch(function (error) {
+        console.error('Error capturing the canvas:', error); // Log any errors
+      });
     });
   });
 

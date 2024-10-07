@@ -1,20 +1,25 @@
-const section = document.querySelector('section.vid')
-const vid = section.querySelector('video')
+window.addEventListener('DOMContentLoaded', function() {
+  // Get the element that contains the text
+  const typewriterElement = document.getElementById('typewriter');
+  const fullText = typewriterElement.textContent;
 
-vid.pause()
+  // Clear the existing text content
+  typewriterElement.textContent = '';
 
-const scroll = () => {
-  const distance = window.scrollY - section.offsetTop
-  const total = section.clientHeight - window.innerHeight
+  let index = 0; // To track current character index
 
-  let percentage = distance / total
-  percentage = Math.max(0, percentage)
-  percentage = Math.min(percentage, 1)
-
-  if (vid.duration > 0) {
-    vid.currentTime = vid.duration * percentage
+  // Function to handle the typewriter effect
+  function typeWriter() {
+    if (index < fullText.length) {
+      // Append the next character
+      typewriterElement.textContent += fullText.charAt(index);
+      index++;
+      // Set a delay before typing the next character (you can adjust the speed here)
+      setTimeout(typeWriter, 50);
+    }
   }
-}
 
-scroll()
-window.addEventListener('scroll', scroll)
+  // Start the typewriter effect
+  typeWriter();
+});
+

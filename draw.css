@@ -16,6 +16,7 @@ body {
 
 /* Optional styling for buttons */
 #refreshButton,
+#aboutButton,
 #homeButton,
 #saveButton,
 #downloadButton {
@@ -44,28 +45,15 @@ body {
   left: 220px;
 }
 
-#downloadContainer {
-  position: absolute;
-  top: 50px; /* Positioning below the buttons */
-  left: 340px; /* Align with other buttons */
-  z-index: 10; /* Ensure it appears above other elements */
-  display: none; /* Initially hidden */
-}
 
-#downloadLink {
-  padding: 10px 20px;
-  color: rgb(255, 255, 255);
-  border: none;
-  text-decoration: none; /* Remove underline */
-  font-size: 16px;
-  font-family: monospace;
-}
-
-#downloadLink:hover {
-  filter: drop-shadow(0 0 10px white);
+#aboutButton{
+  top: 10px;
+  right: 10px;
 }
 
 
+
+#aboutButton:hover,
 #refreshButton:hover,
 #homeButton:hover,
 #saveButton:hover,
