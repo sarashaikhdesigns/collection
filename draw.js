@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Create a link to download the canvas as a PNG file
         const link = document.createElement('a');
         link.href = canvas.toDataURL('image/png'); // Get canvas data as a PNG file
-        link.download = 'collage.png'; // Set the downloaded file name
+        link.download = 'your-art.png'; // Set the downloaded file name
         link.click(); // Trigger download
       }).catch(function (error) {
         console.error('Error capturing the canvas:', error); // Log any errors

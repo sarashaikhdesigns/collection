@@ -1,25 +1,32 @@
 window.addEventListener('DOMContentLoaded', function() {
-  // Get the element that contains the text
+  // Typewriter effect
   const typewriterElement = document.getElementById('typewriter');
   const fullText = typewriterElement.textContent;
-
-  // Clear the existing text content
   typewriterElement.textContent = '';
+  let index = 0;
 
-  let index = 0; // To track current character index
-
-  // Function to handle the typewriter effect
   function typeWriter() {
     if (index < fullText.length) {
-      // Append the next character
       typewriterElement.textContent += fullText.charAt(index);
       index++;
-      // Set a delay before typing the next character (you can adjust the speed here)
       setTimeout(typeWriter, 50);
     }
   }
-
-  // Start the typewriter effect
   typeWriter();
-});
 
+  // Slideshow effect
+  let imageIndex = 1; // Start from the first image
+  const totalImages = 50; // Total number of images
+  const slideshowElement = document.getElementById('slideshow');
+
+  function rotateImages() {
+    imageIndex++;
+    if (imageIndex > totalImages) {
+      imageIndex = 1; // Loop back to the first image
+    }
+    slideshowElement.src = `images/flower${imageIndex}.png`;
+  }
+
+  // Change image every 3 seconds
+  setInterval(rotateImages, 1000);
+});

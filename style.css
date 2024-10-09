@@ -5,36 +5,37 @@ body {
   font-family: monospace;
 }
 
-
 .enter {
+  margin-top: 10%;
   max-width: 100%;
   text-align: center;
 }
 
 .enter img {
-  width: 30%; /* The image will take up 30% of its container */
+  width: 200px; /* Set width to 200px */
+  height: 200px; /* Set height to 200px */
+  transition: transform 1s ease; /* Add a smooth transition */
 }
 
-.enter:hover{
+.enter:hover {
   filter: drop-shadow(0 0 10px white);
+  transform: scale(1.05); /* Slight zoom effect on hover */
 }
 
-.story p{
+.story p {
   color: white;
 }
 
-.story{
+.story {
+  margin-top: 10%;
   justify-content: center;
   align-content: center;
   display: flex;
 }
 
 /* Optional styling for buttons */
-#refreshButton,
 #aboutButton,
-#homeButton,
-#saveButton,
-#downloadButton {
+#homeButton {
   position: absolute;
   z-index: 10;
   padding: 10px 20px;
@@ -50,19 +51,15 @@ body {
   left: 10px;
 }
 
-
-#aboutButton{
+#aboutButton {
   top: 10px;
   right: 10px;
 }
-
-
 
 #aboutButton:hover,
 #homeButton:hover {
   filter: drop-shadow(0 0 10px white);
 }
-
 
 .scroll-container {
   max-height: 100%; /* Container takes full height */
