@@ -33,34 +33,31 @@ document.addEventListener('DOMContentLoaded', function () {
     // After all images are loaded, use html2canvas
     Promise.all(promises).then(() => {
       html2canvas(imageContainer, {
-        useCORS: true, // Allow cross-origin image handling if needed
-        allowTaint: false, // Tainting disabled to allow images to be saved
-        logging: true, // Enable logging for debugging
-        scrollX: 0, // Ensure that scrolling doesn't interfere with the capture
+        useCORS: true,
+        allowTaint: false,
+        logging: true,
+        scrollX: 0,
         scrollY: 0
       }).then(function (canvas) {
         const ctx = canvas.getContext('2d');
         
-        // Add timestamp and custom text
         const date = new Date();
         const timestamp = date.toLocaleString(); // Get current time
         const text = "#forgetmenot";
         
         ctx.font = '20px monospace';
-        ctx.fillStyle = 'black'; // Text color
-        ctx.textAlign = 'right'; // Align text to the right
+        ctx.fillStyle = 'black';
+        ctx.textAlign = 'right';
         
-        // Position text in the bottom right corner
-        ctx.fillText(timestamp, canvas.width - 10, canvas.height - 30); // Timestamp
-        ctx.fillText(text, canvas.width - 10, canvas.height - 10); // Custom text
+        ctx.fillText(timestamp, canvas.width - 10, canvas.height - 30);
+        ctx.fillText(text, canvas.width - 10, canvas.height - 10);
 
-        // Create a link to download the canvas as a PNG file
         const link = document.createElement('a');
-        link.href = canvas.toDataURL('image/png'); // Get canvas data as a PNG file
-        link.download = 'your-art.png'; // Set the downloaded file name
-        link.click(); // Trigger download
+        link.href = canvas.toDataURL('image/png');
+        link.download = 'your-art.png';
+        link.click();
       }).catch(function (error) {
-        console.error('Error capturing the canvas:', error); // Log any errors
+        console.error('Error capturing the canvas:', error);
       });
     });
   });
@@ -101,6 +98,15 @@ document.addEventListener('DOMContentLoaded', function () {
       image.style.position = 'absolute';
       image.style.left = `${offsetX - imgWidth / 2}px`;
       image.style.top = `${offsetY - imgHeight / 2}px`;
+
+      // Set a timer to add the fade-out class after 15 seconds
+      setTimeout(() => {
+        image.classList.add('fade-out');
+        // Remove the image from the DOM after the fade effect is completed
+        setTimeout(() => {
+          imageContainer.removeChild(image);
+        }, 10000); // Wait for the fade-out duration (1 second) before removing
+      }, 20000); // 20 seconds
     };
 
     imageContainer.appendChild(image);

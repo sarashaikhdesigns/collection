@@ -15,7 +15,7 @@ body {
 #poem {
   position: fixed;
   top: 10%; /* Adjust the vertical position */
-  left: 1%; /* Adjust the horizontal position */
+  left: 30px;
   width: 300px; /* Adjust size as needed */
   z-index: 1000; /* Ensures the logo stays on top */
 }
@@ -27,7 +27,6 @@ body {
 
 /* Optional styling for buttons */
 #refreshButton,
-#aboutButton,
 #homeButton,
 #saveButton,
 #downloadButton {
@@ -57,17 +56,17 @@ body {
 }
 
 
-#aboutButton{
-  top: 10px;
-  right: 10px;
-}
 
 
-
-#aboutButton:hover,
 #refreshButton:hover,
 #homeButton:hover,
 #saveButton:hover,
 #downloadButton:hover {
   filter: drop-shadow(0 0 10px white);
+}
+
+
+.fade-out {
+  transition: opacity 10s ease-out;
+  opacity: 0;
 }
