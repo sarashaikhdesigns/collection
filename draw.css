@@ -12,6 +12,14 @@ body {
   overflow: hidden; /* Ensures no scrolling */
 }
 
+#logo {
+  position: fixed;
+  top: 48%; /* Adjust the vertical position */
+  left: 42%; /* Adjust the horizontal position */
+  width: 200px; /* Adjust size as needed */
+  z-index: 1000; /* Ensures the logo stays on top */
+}
+
 
 
 /* Optional styling for buttons */
