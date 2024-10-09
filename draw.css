@@ -12,15 +12,18 @@ body {
   overflow: hidden; /* Ensures no scrolling */
 }
 
-#logo {
+#poem {
   position: fixed;
-  top: 48%; /* Adjust the vertical position */
-  left: 42%; /* Adjust the horizontal position */
+  top: 10%; /* Adjust the vertical position */
+  left: 1%; /* Adjust the horizontal position */
   width: 300px; /* Adjust size as needed */
   z-index: 1000; /* Ensures the logo stays on top */
 }
 
-
+#poem pre{
+  color: white;
+  font-size: 9px;
+}
 
 /* Optional styling for buttons */
 #refreshButton,
