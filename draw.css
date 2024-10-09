@@ -16,7 +16,7 @@ body {
   position: fixed;
   top: 48%; /* Adjust the vertical position */
   left: 42%; /* Adjust the horizontal position */
-  width: 200px; /* Adjust size as needed */
+  width: 300px; /* Adjust size as needed */
   z-index: 1000; /* Ensures the logo stays on top */
 }
 

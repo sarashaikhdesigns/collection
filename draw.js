@@ -39,6 +39,21 @@ document.addEventListener('DOMContentLoaded', function () {
         scrollX: 0, // Ensure that scrolling doesn't interfere with the capture
         scrollY: 0
       }).then(function (canvas) {
+        const ctx = canvas.getContext('2d');
+        
+        // Add timestamp and custom text
+        const date = new Date();
+        const timestamp = date.toLocaleString(); // Get current time
+        const text = "#forgetmenot";
+        
+        ctx.font = '20px monospace';
+        ctx.fillStyle = 'black'; // Text color
+        ctx.textAlign = 'right'; // Align text to the right
+        
+        // Position text in the bottom right corner
+        ctx.fillText(timestamp, canvas.width - 10, canvas.height - 30); // Timestamp
+        ctx.fillText(text, canvas.width - 10, canvas.height - 10); // Custom text
+
         // Create a link to download the canvas as a PNG file
         const link = document.createElement('a');
         link.href = canvas.toDataURL('image/png'); // Get canvas data as a PNG file
